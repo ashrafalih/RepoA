@@ -1,0 +1,6 @@
+name: caller
+on:
+  workflow_call:
+jobs:
+  test:
+    uses: ashrafalih/repoB/.github/workflows/called.yml@main
