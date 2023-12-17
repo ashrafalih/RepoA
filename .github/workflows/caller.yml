@@ -1,8 +1,13 @@
 name: caller
+
 on:
   workflow_dispatch:
+  
 jobs:
   test:
-    uses: ashrafalih/repoB/.github/workflows/called.yml@main
-    with:
-      secrets: PAT_TOKEN
+    runs-on: ubuntu-latest
+    steps:
+    - name: Call the workflow
+      uses: ashrafalih/repoB/.github/workflows/called.yml@main
+      with:
+        secrets: PAT_TOKEN
