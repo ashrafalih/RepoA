@@ -1,13 +1,18 @@
-name: caller
+name: test
 
 on:
-  workflow_dispatch:
-  
+  workflow_call:
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: Call the workflow
-      uses: ashrafalih/repoB/.github/workflows/called.yml@main
+    - name: Git checkout
+      uses: actions/checkout@v3
       with:
-        secrets: PAT_TOKEN
+        repository: ashrafalih/RepoB
+        ref: main
+        path: workflows
+        token: ${{ secrets.PAT_TOKEN }}
+    - name: Run a python script located in repoB
+      run: ls
