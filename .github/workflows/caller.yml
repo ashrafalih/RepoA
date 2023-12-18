@@ -9,5 +9,3 @@ jobs:
     steps:
     - name: Call the workflow
       uses: ashrafalih/repoB/.github/workflows/called.yml@main
-      with:
-        secrets: PAT_TOKEN
