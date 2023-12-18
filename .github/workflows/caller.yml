@@ -5,6 +5,6 @@ jobs:
   call-workflow-passing-data:
     uses: ashrafalih/RepoB/.github/workflows/called.yml@main
     with:
-      config-path: .github/labeler.yml
+      config-path: hello
     secrets:
       PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
