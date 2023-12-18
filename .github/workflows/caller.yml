@@ -3,7 +3,7 @@ on:
   
 jobs:
   call-workflow-passing-data:
-    uses: ashrafalih/RepoA/.github/workflows/called.yml@main
+    uses: ashrafalih/RepoB/.github/workflows/called.yml@main
     with:
       config-path: .github/labeler.yml
     secrets: inherit
