@@ -6,6 +6,4 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    steps:
-    - name: Call the workflow
-      uses: ashrafalih/repoB/.github/workflows/called.yml@main
+    uses: ashrafalih/repoB/.github/workflows/called.yml@main
