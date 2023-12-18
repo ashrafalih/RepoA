@@ -6,4 +6,5 @@ jobs:
     uses: ashrafalih/RepoB/.github/workflows/called.yml@main
     with:
       config-path: .github/labeler.yml
-    secrets: inherit
+    secrets:
+      PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
