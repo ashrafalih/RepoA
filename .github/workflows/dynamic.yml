@@ -24,11 +24,6 @@ jobs:
           # Set the output variable
           echo "::set-output name=get_env::$get_env"
 
-      - name: Build
-        run: |
-          # Use the dynamic value in the build step
-          echo "Building with dynamic value: ${{ needs.build.outputs.deploy_env }}"
-
   test:
     runs-on: ubuntu-latest
     needs: build
