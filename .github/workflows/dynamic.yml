@@ -8,31 +8,33 @@ jobs:
 
     outputs:
       # Define the output variable
-      id: dynamic_value
-      value: ${{ steps.set-dynamic-value.outputs.dynamic_value }}
+      deploy_env: ${{ steps.get_env.outputs.get_env }}
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
       - name: Set Dynamic Value
-        id: set-dynamic-value
+        id: get_env
         run: |
           # Generate a dynamic value (you can replace this with your logic)
-          dynamic_value="generated-value-$(date +%s)"
-          echo "Dynamic Value: $dynamic_value"
+          get_env="generated-value-$(date +%s)"
+          echo "Dynamic Value: $get_env"
 
           # Set the output variable
-          echo "::set-output name=dynamic_value::$dynamic_value"
+          echo "::set-output name=get_env::$get_env"
 
       - name: Build
         run: |
           # Use the dynamic value in the build step
-          echo "Building with dynamic value: ${{ needs.build.outputs.dynamic_value }}"
+          echo "Building with dynamic value: ${{ needs.build.outputs.deploy_env }}"
 
   test:
     runs-on: ubuntu-latest
     needs: build
+
+    outputs:
+      deploy_env: ${{ needs.build.outputs.deploy_env }}
 
     steps:
       - name: Checkout Repository
@@ -41,4 +43,4 @@ jobs:
       - name: Test
         run: |
           # Access the dynamic value passed from the build job
-          echo "Testing with dynamic value: ${{ needs.build.outputs.dynamic_value }}"
+          echo "Testing with dynamic value: ${{ needs.build.outputs.deploy_env }}"
